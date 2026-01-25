@@ -1,0 +1,266 @@
+---
+# Jekyll front matter - allows access to _data/strings.yml
+---
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ site.data.strings.site.title }}</title>
+  <meta name="description" content="{{ site.data.strings.site.description }}" />
+  <link rel="preconnect" href="https://images.squarespace-cdn.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <!-- Favicon - Light and Dark Mode Support -->
+  <!-- Dark version for light mode (default) -->
+  <link rel="icon" type="image/png" href="assets/images/favicon-dark.png" />
+  <!-- White version for dark mode -->
+  <link rel="icon" type="image/png" href="assets/images/favicon-white.png" media="(prefers-color-scheme: dark)" />
+  <link rel="apple-touch-icon" href="assets/images/favicon-dark.png" />
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // Expose site strings to JavaScript
+    window.SITE_STRINGS = {{ site.data.strings | jsonify }};
+    // Initialize EmailJS when library loads
+    window.addEventListener('load', function() {
+      const strings = window.SITE_STRINGS || {};
+      const emailjsConfig = strings.contact?.emailjs || {};
+      if (emailjsConfig.public_key && typeof emailjs !== 'undefined') {
+        emailjs.init(emailjsConfig.public_key);
+      }
+    });
+  </script>
+</head>
+<body>
+  <nav class="top-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#top" class="nav-logo" aria-label="{{ site.data.strings.site.company_name }} home">
+        <img src="assets/images/metateic-logo-horizontal.png" alt="{{ site.data.strings.site.company_name }}" class="nav-logo-img">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#intro">{{ site.data.strings.nav.intro }}</a></li>
+        <li><a href="#about">{{ site.data.strings.nav.about }}</a></li>
+        <li><a href="#services">{{ site.data.strings.nav.services }}</a></li>
+        <li><a href="#capabilities">{{ site.data.strings.nav.capabilities }}</a></li>
+        <li><a href="#insights">{{ site.data.strings.nav.insights }}</a></li>
+        <li><a href="#contact">{{ site.data.strings.nav.contact }}</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero hero-dark" id="top" aria-label="Hero">
+      <div class="hero-layout">
+        <div class="hero-logo-section">
+          <a class="hero-logo-wrapper" href="#top" aria-label="Metateic home">
+            <img src="assets/images/metateic-logo.png" alt="Metateic logo" class="hero-logo" loading="eager" decoding="async">
+          </a>
+        </div>
+
+        <div class="hero-content">
+          <h1 class="sr-only">{{ site.data.strings.site.company_name }}</h1>
+          <h2 class="hero-subtitle reveal">
+            <span class="hero-line">{{ site.data.strings.hero.subtitle }}</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="section-divider-jagged" aria-hidden="true"></div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="section" id="intro">
+      <div class="section-layout">
+        <div class="section-label">
+          <hr class="label-line" />
+          <p class="label-text reveal"><strong>{{ site.data.strings.intro.label }}</strong></p>
+        </div>
+        <div class="section-content">
+          <p class="reveal"><strong>{{ site.data.strings.site.company_name }}</strong> {{ site.data.strings.intro.content }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="section-layout">
+        <div class="section-label">
+          <hr class="label-line" />
+          <p class="label-text reveal"><strong>{{ site.data.strings.about.label }}</strong></p>
+        </div>
+        <div class="section-content">
+          <p class="reveal">{{ site.data.strings.about.content }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SLIDESHOW -->
+    <section class="slideshow" id="services" aria-label="Services slideshow">
+      <div class="slideshow-wrapper" data-autoplay="true" data-interval="7000">
+        <div class="slideshow-track">
+          
+          <article class="slide active" data-index="0" style="--bg:url('https://images.squarespace-cdn.com/content/v1/6609fc7a0af56445d5963fdb/1762122794426-LNGJLOKUABRGHK3XVD44/unsplash-image-iIJrUoeRoCQ.jpg')">
+            <div class="slide-media-container" aria-hidden="true">
+              <img src="https://images.squarespace-cdn.com/content/v1/6609fc7a0af56445d5963fdb/1762122794426-LNGJLOKUABRGHK3XVD44/unsplash-image-iIJrUoeRoCQ.jpg" alt="" class="slideshow-image" loading="lazy" decoding="async">
+            </div>
+            <div class="slide-content">
+              <h2 class="slide-title">{{ site.data.strings.services.slide1 }}</h2>
+            </div>
+          </article>
+          <article class="slide" data-index="1" style="--bg:url('https://images.squarespace-cdn.com/content/v1/6609fc7a0af56445d5963fdb/1762122705551-TRX6XU154I4OKR6OP5MG/unsplash-image-tBvF46kmwBw.jpg')">
+            <div class="slide-media-container" aria-hidden="true">
+              <img src="https://images.squarespace-cdn.com/content/v1/6609fc7a0af56445d5963fdb/1762122705551-TRX6XU154I4OKR6OP5MG/unsplash-image-tBvF46kmwBw.jpg" alt="" class="slideshow-image" loading="lazy" decoding="async">
+            </div>
+            <div class="slide-content">
+              <h2 class="slide-title">{{ site.data.strings.services.slide2 }}</h2>
+            </div>
+          </article>
+          <article class="slide" data-index="2" style="--bg:url('https://images.squarespace-cdn.com/content/v1/6609fc7a0af56445d5963fdb/1762122462765-MBR9MC99ZMVCH7ERR8QS/unsplash-image-6sAl6aQ4OWI.jpg')">
+            <div class="slide-media-container" aria-hidden="true">
+              <img src="https://images.squarespace-cdn.com/content/v1/6609fc7a0af56445d5963fdb/1762122462765-MBR9MC99ZMVCH7ERR8QS/unsplash-image-6sAl6aQ4OWI.jpg" alt="" class="slideshow-image" loading="lazy" decoding="async">
+            </div>
+            <div class="slide-content">
+              <h2 class="slide-title">{{ site.data.strings.services.slide3 }}</h2>
+            </div>
+          </article>
+        </div>
+
+        <button class="slideshow-prev" type="button" aria-label="Previous slide">‹</button>
+        <button class="slideshow-next" type="button" aria-label="Next slide">›</button>
+
+        <div class="slideshow-indicators" role="tablist" aria-label="Slideshow indicators">
+          <button class="slideshow-indicator active" type="button" aria-label="Slide 1" aria-selected=true></button><button class="slideshow-indicator" type="button" aria-label="Slide 2" aria-selected=false></button><button class="slideshow-indicator" type="button" aria-label="Slide 3" aria-selected=false></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="section" id="capabilities">
+      <h2 class="reveal">{{ site.data.strings.capabilities.heading }}</h2>
+      <div class="capabilities-grid">
+        
+        <article class="capability-item reveal">
+          <div class="capability-image">
+            <img src="https://images.squarespace-cdn.com/content/v1/6609fc7a0af56445d5963fdb/cbc48703-ba20-491b-bbd2-2a5ac8514da4/full-stack.jpeg" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="capability-text">
+            <h4>{{ site.data.strings.capabilities.fullstack.title }}</h4>
+            <p>{{ site.data.strings.capabilities.fullstack.description }}</p>
+          </div>
+        </article>
+        <article class="capability-item reveal">
+          <div class="capability-image">
+            <img src="https://images.squarespace-cdn.com/content/v1/6609fc7a0af56445d5963fdb/8188b71a-b3a8-45af-a595-a910cb62f556/agile.jpeg" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="capability-text">
+            <h4>{{ site.data.strings.capabilities.agile.title }}</h4>
+            <p>{{ site.data.strings.capabilities.agile.description }}</p>
+          </div>
+        </article>
+        <article class="capability-item reveal">
+          <div class="capability-image">
+            <img src="https://images.squarespace-cdn.com/content/v1/6609fc7a0af56445d5963fdb/1aa98cd5-54b6-482a-812a-1eab18b9c080/scalable.jpeg" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="capability-text">
+            <h4>{{ site.data.strings.capabilities.scalable.title }}</h4>
+            <p>{{ site.data.strings.capabilities.scalable.description }}</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section class="section" id="insights">
+      <div class="insights-layout">
+        <div class="insights-image" aria-hidden="true">
+          <img src="assets/images/insights-image.png" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="insights-content">
+          <h2 class="reveal insights-heading">{{ site.data.strings.insights.heading }}</h2>
+          <a class="button primary reveal" href="{{ site.data.strings.insights.blog_url }}" target="_blank" rel="noopener">{{ site.data.strings.insights.button }}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="contact-layout">
+        <div class="contact-form-container">
+          <h2 class="contact-heading reveal">{{ site.data.strings.contact.heading }}</h2>
+          <p class="contact-intro reveal">{{ site.data.strings.contact.intro }}</p>
+
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            
+            <div class="form-group">
+              <label for="firstName">{{ site.data.strings.contact.form.name_label }}</label>
+              <div class="name-fields">
+                <input type="text" id="firstName" name="firstName" placeholder="{{ site.data.strings.contact.form.first_name_placeholder }}" required>
+                <input type="text" id="lastName" name="lastName" placeholder="{{ site.data.strings.contact.form.last_name_placeholder }}" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">{{ site.data.strings.contact.form.email_label }} <span class="required">{{ site.data.strings.contact.form.required }}</span></label>
+              <input type="email" id="email" name="email" placeholder="{{ site.data.strings.contact.form.email_placeholder }}" required>
+              <div class="checkbox-wrapper">
+                <input type="checkbox" id="mailingList" name="mailingList" value="yes">
+                <label for="mailingList">{{ site.data.strings.contact.form.mailing_list_label }}</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">{{ site.data.strings.contact.form.phone_label }}</label>
+              <input type="tel" id="phone" name="phone" placeholder="{{ site.data.strings.contact.form.phone_placeholder }}">
+            </div>
+
+            <div class="form-group">
+              <label for="message">{{ site.data.strings.contact.form.message_label }} <span class="required">{{ site.data.strings.contact.form.required }}</span></label>
+              <textarea id="message" name="message" rows="5" placeholder="{{ site.data.strings.contact.form.message_placeholder }}" required></textarea>
+            </div>
+
+            <button class="button primary" type="submit">
+              <span class="button-text">{{ site.data.strings.contact.form.submit }}</span>
+              <span class="button-loader" aria-live="polite">{{ site.data.strings.contact.form.sending }}</span>
+            </button>
+
+            <div class="form-message" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="contact-image" aria-hidden="true">
+          <img src="assets/images/contact-image.png" alt="" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <h3>{{ site.data.strings.footer.company_name }}</h3>
+          <p>{{ site.data.strings.footer.description }}</p>
+        </div>
+        <div>
+          <h4>{{ site.data.strings.footer.explore_title }}</h4>
+          <p><a href="#services">{{ site.data.strings.footer.services_link }}</a></p>
+          <p><a href="#capabilities">{{ site.data.strings.footer.capabilities_link }}</a></p>
+          <p><a href="{{ site.data.strings.insights.blog_url }}" target="_blank" rel="noopener">{{ site.data.strings.footer.insights_link }}</a></p>
+        </div>
+        <div>
+          <h4>{{ site.data.strings.footer.contact_title }}</h4>
+          <p><a href="#contact">{{ site.data.strings.footer.get_in_touch }}</a></p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

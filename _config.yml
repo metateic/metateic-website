@@ -1,0 +1,18 @@
+title: Metateic
+email: ""  # Will be replaced by CONTACT_EMAIL GitHub secret
+# For GitHub Pages:
+# - If site is at root (username.github.io): baseurl: ""
+# - If site is in subdirectory (username.github.io/repo-name): baseurl: "/repo-name"
+baseurl: ""
+# Your site's full URL (leave empty for GitHub Pages auto-detection, or set to your custom domain)
+url: ""
+description: "Metateic offers software consulting in Toronto, focusing on simplifying technology and delivering innovative, client-centric software solutions to foster growth and digital transformation."
+markdown: kramdown
+
+# Include assets folder
+include:
+  - assets
+
+# Ensure static files are kept
+keep_files:
+  - assets

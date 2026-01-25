@@ -1,0 +1,99 @@
+# Site Strings Configuration
+# Update these values to change text throughout the site
+
+# Site Info
+site:
+  title: "Metateic | Drive Digital Growth Today"
+  description: "Metateic offers software consulting in Toronto, focusing on simplifying technology and delivering modern, client-centric solutions."
+  company_name: "Metateic"
+  tagline: "Software Consultancy Group based in Toronto, Ontario."
+  location: "Toronto, Ontario"
+
+# Navigation
+nav:
+  intro: "Intro"
+  about: "About"
+  services: "Services"
+  capabilities: "Capabilities"
+  insights: "Insights"
+  contact: "Contact"
+
+# Hero Section
+hero:
+  subtitle: "Software Consultancy Group based in Toronto, Ontario."
+
+# Intro Section
+intro:
+  label: "Intro"
+  content: "Metateic simplifies the technology landscape for our clients, enabling them to stay focused on their core objectives without getting bogged down by technical complexity. Our goal is clear — to unburden teams from operational friction and deliver reliable, modern solutions that simply work."
+
+# About Section
+about:
+  label: "About"
+  content: "At Metateic, we're committed to achieving meaningful results through modern tooling, pragmatic design, and a client-first mindset. We believe simplicity is a superpower — one that allows us to move fast, deliver high-quality outcomes, and continuously evolve alongside our clients' needs. Our lean approach ensures agility, precision, and impact in every project we deliver."
+
+# Services Slideshow
+services:
+  slide1: "Metateic ensures a seamless transition from legacy systems to cloud-native architectures, delivering efficiency and scalability while addressing security and compliance from the outset."
+  slide2: "Our expertise in AI and machine learning transforms your data into actionable insights, driving competitive advantage through robust and production-ready ML systems tailored to your needs."
+  slide3: "We specialize in developing purpose-built applications that meet your specific requirements, ensuring they are scalable, secure, and impactful for your business objectives."
+
+# Capabilities Section
+capabilities:
+  heading: "Custom Software Development Excellence"
+  fullstack:
+    title: "Full-stack"
+    description: "Comprehensive capabilities across all technology stacks."
+  agile:
+    title: "Agile"
+    description: "Rapid development cycles for increased flexibility and speed."
+  scalable:
+    title: "Scalable"
+    description: "Architectures designed to handle millions of users efficiently."
+
+# Insights Section
+insights:
+  heading: "Take a minute to <span class=\"text-highlight-circle\">read</span> some of our <span class=\"text-highlight\">thoughts</span> and <span class=\"text-highlight\">opinions</span>, even leave a comment (or two)"
+  button: "Read more"
+  blog_url: "https://blog.metateic.ca/"
+
+# Contact Section
+contact:
+  heading: "Let's simplify your technology challenges — together. Contact us today!"
+  intro: "Interested in working together? Fill out some info and we will be in touch shortly! We can't wait to hear from you!"
+  email: ""  # Will be replaced by CONTACT_EMAIL GitHub secret
+  # EmailJS Configuration (for direct email sending)
+  # Get these from https://www.emailjs.com after setting up your account
+  # Values will be replaced by GitHub secrets during deployment
+  emailjs:
+    service_id: ""  # Will be replaced by EMAILJS_SERVICE_ID GitHub secret
+    template_id: ""  # Will be replaced by EMAILJS_TEMPLATE_ID GitHub secret
+    public_key: ""  # Will be replaced by EMAILJS_PUBLIC_KEY GitHub secret
+  form:
+    name_label: "Name"
+    first_name_placeholder: "First Name (required)"
+    last_name_placeholder: "Last Name (required)"
+    email_label: "Email"
+    email_placeholder: "your.email@example.com"
+    required: "(required)"
+    phone_label: "Phone"
+    phone_placeholder: "(555) 123-4567"
+    message_label: "Message"
+    message_placeholder: "Tell us about your project..."
+    mailing_list_label: "Sign up for news and updates"
+    submit: "Submit"
+    sending: "Sending..."
+    success: "Thanks! Your message has been sent successfully. We'll get back to you soon."
+    error: "Sorry, there was an error sending your message. Please try again."
+    email_subject: "New Contact Form Submission from Metateic Website"
+
+# Footer
+footer:
+  company_name: "Metateic"
+  description: "Software consultancy group based in Toronto, Ontario."
+  explore_title: "Explore"
+  contact_title: "Contact"
+  services_link: "Services"
+  capabilities_link: "Capabilities"
+  insights_link: "Insights"
+  get_in_touch: "Get in touch"

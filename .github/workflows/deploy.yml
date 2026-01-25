@@ -1,0 +1,82 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Set contact email and EmailJS config from secrets
+        run: |
+          # Update _data/strings.yml with the email from secret
+          if [ -n "${{ secrets.CONTACT_EMAIL }}" ]; then
+            sed -i "s|email:.*|email: ${{ secrets.CONTACT_EMAIL }}|g" _data/strings.yml
+            # Also update _config.yml if needed
+            sed -i "s|^email:.*|email: ${{ secrets.CONTACT_EMAIL }}|g" _config.yml
+            echo "✓ Contact email updated from secret"
+          else
+            echo "⚠ Warning: CONTACT_EMAIL secret not set, using default from _data/strings.yml"
+          fi
+          
+          # Update EmailJS configuration from secrets
+          if [ -n "${{ secrets.EMAILJS_PUBLIC_KEY }}" ]; then
+            sed -i "s|public_key:.*|public_key: ${{ secrets.EMAILJS_PUBLIC_KEY }}|g" _data/strings.yml
+            echo "✓ EmailJS public key updated from secret"
+          fi
+          if [ -n "${{ secrets.EMAILJS_SERVICE_ID }}" ]; then
+            sed -i "s|service_id:.*|service_id: ${{ secrets.EMAILJS_SERVICE_ID }}|g" _data/strings.yml
+            echo "✓ EmailJS service ID updated from secret"
+          fi
+          if [ -n "${{ secrets.EMAILJS_TEMPLATE_ID }}" ]; then
+            sed -i "s|template_id:.*|template_id: ${{ secrets.EMAILJS_TEMPLATE_ID }}|g" _data/strings.yml
+            echo "✓ EmailJS template ID updated from secret"
+          fi
+
+      - name: Build with Jekyll
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --destination ./_site
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
