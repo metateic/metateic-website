@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "@metateic/ui/themes/metateic.css";
+@source "../node_modules/@metateic/ui/src";
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+}

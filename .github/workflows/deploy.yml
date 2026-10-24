@@ -1,82 +1,76 @@
-name: Deploy to GitHub Pages
+name: Build and deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@v7
         with:
-          ruby-version: '3.1'
-          bundler-cache: true
+          path: app
+
+      # @metateic/ui is installed as file:../metateic-ui, so it must be checked out beside the app.
+      # Pinned to a tag so a merge to metateic-ui can't break this site's deploy; bump to upgrade.
+      # GITHUB_TOKEN can't read other private repos; METATEIC_UI_TOKEN is a fine-grained PAT with read access.
+      - uses: actions/checkout@v7
+        with:
+          repository: metateic/metateic-ui
+          ref: v0.1.0
+          path: metateic-ui
+          token: ${{ secrets.METATEIC_UI_TOKEN || github.token }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: app/.nvmrc
+          cache: npm
+          cache-dependency-path: |
+            app/package-lock.json
+            metateic-ui/package-lock.json
+
+      # metateic-ui source is type-checked by next build, which resolves react types from its own node_modules
+      - name: Install metateic-ui dependencies
+        working-directory: metateic-ui
+        run: npm ci
 
       - name: Install dependencies
-        run: bundle install
+        working-directory: app
+        run: npm ci
 
-      - name: Set contact email and EmailJS config from secrets
-        run: |
-          # Update _data/strings.yml with the email from secret
-          if [ -n "${{ secrets.CONTACT_EMAIL }}" ]; then
-            sed -i "s|email:.*|email: ${{ secrets.CONTACT_EMAIL }}|g" _data/strings.yml
-            # Also update _config.yml if needed
-            sed -i "s|^email:.*|email: ${{ secrets.CONTACT_EMAIL }}|g" _config.yml
-            echo "✓ Contact email updated from secret"
-          else
-            echo "⚠ Warning: CONTACT_EMAIL secret not set, using default from _data/strings.yml"
-          fi
-          
-          # Update EmailJS configuration from secrets
-          if [ -n "${{ secrets.EMAILJS_PUBLIC_KEY }}" ]; then
-            sed -i "s|public_key:.*|public_key: ${{ secrets.EMAILJS_PUBLIC_KEY }}|g" _data/strings.yml
-            echo "✓ EmailJS public key updated from secret"
-          fi
-          if [ -n "${{ secrets.EMAILJS_SERVICE_ID }}" ]; then
-            sed -i "s|service_id:.*|service_id: ${{ secrets.EMAILJS_SERVICE_ID }}|g" _data/strings.yml
-            echo "✓ EmailJS service ID updated from secret"
-          fi
-          if [ -n "${{ secrets.EMAILJS_TEMPLATE_ID }}" ]; then
-            sed -i "s|template_id:.*|template_id: ${{ secrets.EMAILJS_TEMPLATE_ID }}|g" _data/strings.yml
-            echo "✓ EmailJS template ID updated from secret"
-          fi
-
-      - name: Build with Jekyll
+      - name: Build
+        working-directory: app
+        run: npm run build
         env:
-          JEKYLL_ENV: production
-        run: bundle exec jekyll build --destination ./_site
+          NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
+        if: github.event_name != 'pull_request'
         with:
-          path: ./_site
+          path: app/out
 
   deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

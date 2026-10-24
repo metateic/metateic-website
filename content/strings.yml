@@ -1,0 +1,177 @@
+# Site Strings Configuration
+# Update these values to change text throughout the site
+
+# Site Info
+site:
+  title: "Metateic | Software consultancy in Toronto"
+  description: "Metateic is a Toronto software consultancy. We modernize legacy systems, build custom software, and put data to work — then leave you with something your team can actually run."
+  company_name: "Metateic"
+  tagline: "Software consultancy in Toronto."
+  location: "Toronto, Ontario"
+
+# Navigation
+nav:
+  intro: "Intro"
+  about: "About"
+  services: "Services"
+  approach: "Approach"
+  capabilities: "Capabilities"
+  insights: "Insights"
+  contact: "Contact"
+
+# Hero Section
+hero:
+  eyebrow: "Toronto · Software consultancy"
+  headline: "Keep your team on the work that matters."
+  accent: "that matters."
+  supporting: "Metateic takes on the technical weight — aging systems, custom software, and the data behind a decision — and leaves you with something modern, reliable, and simple to run."
+  primary_cta: "See how we help"
+  primary_href: "#services"
+  secondary_cta: "Start a conversation"
+  secondary_href: "#contact"
+
+# Intro Section
+intro:
+  label: "Intro"
+  content: "simplifies the technology in front of a team so the business can stay on its actual objectives. We take operational friction off the table and deliver software that works in the environment you already have."
+  support: "Engagements stay small on purpose. You see the decisions, the scope stays negotiable, and the result is something your own people can operate after we step back."
+
+# About Section
+about:
+  label: "About"
+  content: "We are a Toronto consultancy built around a simple bet: most software problems get worse when the solution gets larger. Modern tools help. So does saying no to the ones you do not need."
+  principles:
+    - title: "Simplicity"
+      text: "Fewer moving parts, and a reason for each one. If a system needs a specialist to explain it every week, it is not finished."
+    - title: "Pragmatism"
+      text: "We use current tooling where it earns its place, and leave familiar systems alone when they are doing the job. The goal is an outcome, not a rewrite."
+    - title: "Your pace"
+      text: "We work inside your priorities. Progress shows up in short cycles you can react to, not in a plan that only makes sense at the end."
+
+# Services
+services:
+  heading: "What we take on"
+  intro: "Three kinds of work. Each one is scoped to a result you can use, not a stack chosen for its own sake."
+  items:
+    - title: "Cloud modernization"
+      summary: "A clear path from a legacy system to a cloud-native one, with security and compliance treated as part of the design."
+      image: "/images/service-cloud.jpg"
+      points:
+        - "Map what the current system actually does before choosing a target architecture."
+        - "Move in stages so the business keeps running during the transition."
+        - "Address access, security, and compliance before cutover, not in a review afterward."
+    - title: "Applied AI"
+      summary: "Machine learning that starts from a decision you need to make, and ends as a system someone can operate."
+      image: "/images/service-ai.jpg"
+      points:
+        - "Frame the decision the model is supposed to improve before any training work."
+        - "Check whether the data you have can support that decision."
+        - "Ship something that can be monitored and maintained, not a demo that stalls in a notebook."
+    - title: "Custom software"
+      summary: "Purpose-built applications for a specific workflow — internal tools, customer products, and the integrations between them."
+      image: "/images/service-software.jpg"
+      points:
+        - "Shape the product around the work people already do."
+        - "Keep the surface area small enough to ship, secure, and change."
+        - "Design access, data, and growth into the first version rather than bolting them on."
+
+# Approach
+approach:
+  heading: "How an engagement runs"
+  intro: "The shape is the same whether the work is a migration, a product, or a model. We keep it short enough that you can tell, early, whether it is the right work."
+  steps:
+    - title: "Name the constraint"
+      text: "We start with the bottleneck: the system, the deadline, the decision that is stuck. That is the brief. Everything else waits."
+    - title: "Cut a thin slice"
+      text: "We agree the smallest version that proves the outcome. If that slice is not worth building, a larger program will not fix it."
+    - title: "Build in the open"
+      text: "Work lands in short cycles. You see it as it arrives, and the plan can change without restarting the engagement."
+    - title: "Leave it running"
+      text: "Handover includes access, documentation, and a system your team can own. We do not stay necessary."
+
+# Capabilities Section
+capabilities:
+  heading: "How the work is built"
+  lede: "The same standards apply across a migration, a product, and a model."
+  fullstack:
+    title: "Full-stack"
+    description: "Interface, services, data, and the infrastructure they sit on. One group owns the whole path, so the pieces are designed to fit."
+    image: "/images/fullstack.jpg"
+  agile:
+    title: "Agile"
+    description: "Short cycles, visible progress, and scope that can move. You react to working software, not to a status report."
+    image: "/images/agile.jpg"
+  scalable:
+    title: "Built to last"
+    description: "Structure that can take more use and more change without a rewrite. We design for the load you have, and we say so when the future load is still a guess."
+    image: "/images/scalable.jpg"
+
+# Insights Section
+insights:
+  heading_lead: "Notes from the practice."
+  heading_rest: "We write about the standards, security, and technology questions that show up in the work."
+  image: "/images/insights.png"
+  button: "Visit the blog"
+  blog_url: "https://blog.metateic.ca/"
+  posts:
+    - title: "What Ontario's IT Standards Mean for Software Vendors (and Why They Matter)"
+      date: "29 Jan 2025"
+      excerpt: "Ontario's IT standards are reshaping public-sector software. For vendors, compliance is the gateway to government work."
+      url: "https://blog.metateic.ca/ontario-it-standards-software-vendors/"
+    - title: "An Overview of Ontario's IT Security Standard"
+      date: "1 Sep 2024"
+      excerpt: "A snapshot of GO-ITS 25.0 and what the province's IT security standard asks of the systems behind it."
+      url: "https://blog.metateic.ca/go-its-25-0/"
+    - title: "Top AI Trends to Watch in 2024"
+      date: "20 Jan 2024"
+      excerpt: "Generative AI, edge computing, and the other shifts worth separating from the noise."
+      url: "https://blog.metateic.ca/ai-trends-2024/"
+
+# Contact Section
+contact:
+  heading: "Tell us what is in the way."
+  intro: "A short note is enough: what you are trying to do, and where the technology is slowing it down. We will reply with whether we are the right people for it."
+  image: "/images/contact.png"
+  email: ""  # Will be replaced by CONTACT_EMAIL GitHub secret
+  # EmailJS Configuration (for direct email sending)
+  # Get these from https://www.emailjs.com after setting up your account
+  # Values will be replaced by GitHub secrets during deployment
+  emailjs:
+    service_id: ""  # Will be replaced by EMAILJS_SERVICE_ID GitHub secret
+    template_id: ""  # Will be replaced by EMAILJS_TEMPLATE_ID GitHub secret
+    public_key: ""  # Will be replaced by EMAILJS_PUBLIC_KEY GitHub secret
+  people:
+    - name: "Liam Maguire"
+      email: "liam.maguire@metateic.com"
+    - name: "Anthony Fernandes"
+      email: "anthony.fernandes@metateic.com"
+  form:
+    name_label: "Name"
+    first_name_placeholder: "First name"
+    last_name_placeholder: "Last name"
+    email_label: "Email"
+    email_placeholder: "your.email@example.com"
+    required: "(required)"
+    phone_label: "Phone"
+    phone_placeholder: "(555) 123-4567"
+    message_label: "Message"
+    message_placeholder: "What are you trying to get done, and where is it stuck?"
+    mailing_list_label: "Sign up for news and updates"
+    submit: "Submit"
+    sending: "Sending..."
+    success: "Thanks! Your message has been sent successfully. We'll get back to you soon."
+    error: "Sorry, there was an error sending your message. Please try again."
+    email_subject: "New Contact Form Submission from Metateic Website"
+
+# Footer
+footer:
+  company_name: "Metateic"
+  legal_name: "Metateic Inc."
+  description: "Software consultancy in Toronto. We modernize systems, build custom software, and leave it simple to run."
+  explore_title: "Explore"
+  contact_title: "Contact"
+  services_link: "Services"
+  approach_link: "Approach"
+  capabilities_link: "Capabilities"
+  insights_link: "Insights"
+  get_in_touch: "Get in touch"
