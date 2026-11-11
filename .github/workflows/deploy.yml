@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           repository: metateic/metateic-ui
-          ref: v0.1.0
+          ref: v0.2.0
           path: metateic-ui
           token: ${{ secrets.METATEIC_UI_TOKEN || github.token }}
 

@@ -18,6 +18,8 @@ npm run dev    # http://localhost:3000
 
 All copy (navigation, sections, contact form labels) lives in `content/strings.yml` and is loaded at build time by `lib/strings.ts`. Images are in `public/images/`.
 
+Fonts are self-hosted from `@fontsource-variable/montserrat`, so builds do not call Google Fonts. Colours, the font stack and light/dark values come from the `@metateic/ui` theme.
+
 ## Contact form
 
 The contact form sends through [EmailJS](https://www.emailjs.com). The template should accept `firstName`, `lastName`, `email`, `phone`, `message` and `mailingList`. For local testing, put the keys in `.env.local`:

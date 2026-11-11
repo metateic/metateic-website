@@ -58,6 +58,11 @@ type RawStrings = {
     image: string
     people: { name: string; email: string }[]
     form: {
+      name_label: string
+      email_label: string
+      phone_label: string
+      message_label: string
+      optional: string
       first_name_placeholder: string
       last_name_placeholder: string
       email_placeholder: string

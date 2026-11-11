@@ -14,6 +14,7 @@ import {
   SiteFooter,
   SiteHeader,
   SplitPanel,
+  ThemeToggle,
   Timeline,
 } from "@metateic/ui"
 import ContactForm from "./components/ContactForm"
@@ -28,10 +29,11 @@ export default function Home() {
         logo={{ src: "/metateic-logo-horizontal.png", alt: strings.site.name, className: "brand-logo" }}
         links={strings.nav}
         cta={{ label: strings.contactLabel, href: "#contact" }}
+        extra={<ThemeToggle />}
         mobileNav
         navAt="lg"
       />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <BrandHero
           logoSrc="/metateic-logo.png"
           headline={strings.hero.headline}
