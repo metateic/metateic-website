@@ -8,30 +8,33 @@ import {
   LinkCards,
   MediaGrid,
   PrincipleCards,
-  ScrollProgress,
   SectionHeading,
   ServiceList,
   SiteFooter,
   SiteHeader,
   SplitPanel,
+  ThemeToggle,
   Timeline,
 } from "@metateic/ui"
 import ContactForm from "./components/ContactForm"
+import { latestPosts } from "@/lib/posts"
 import { emailjs, strings } from "@/lib/strings"
 
-export default function Home() {
+export default async function Home() {
+  const posts = await latestPosts(strings.insights.posts)
+
   return (
     <>
-      <ScrollProgress />
       <SiteHeader
         wordmark={strings.site.name}
-        logo={{ src: "/metateic-logo-horizontal.png", alt: strings.site.name, className: "brand-logo" }}
+        logo={{ src: "/metateic-logo-horizontal.png", alt: strings.site.name, className: "brand-logo h-5 sm:h-6" }}
         links={strings.nav}
         cta={{ label: strings.contactLabel, href: "#contact" }}
+        extra={<ThemeToggle />}
         mobileNav
         navAt="lg"
       />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <BrandHero
           logoSrc="/metateic-logo.png"
           headline={strings.hero.headline}
@@ -77,13 +80,13 @@ export default function Home() {
         <Band id="insights" className="border-t border-border">
           <SplitPanel image={{ src: strings.insights.image, width: 682, height: 1024 }}>
             <SectionHeading title={strings.insights.heading_lead} lede={strings.insights.heading_rest} />
-            <Button href={strings.insights.blog_url} size="md" className="mt-6 w-fit transition hover:-translate-y-0.5">
+            <Button href={strings.insights.blog_url} size="md" variant="outline" className="mt-6 w-fit">
               {strings.insights.button}
             </Button>
           </SplitPanel>
           <div className="mt-12">
             <LinkCards
-              items={strings.insights.posts.map((post) => ({
+              items={posts.map((post) => ({
                 href: post.url,
                 eyebrow: post.date,
                 title: post.title,
@@ -108,7 +111,22 @@ export default function Home() {
       <SiteFooter
         wordmark={strings.site.name}
         meta={"Copyright " + new Date().getFullYear() + " " + strings.footer.legal_name}
-      />
+      >
+        <div className="flex flex-col gap-6 pb-2 md:flex-row md:items-start md:justify-between">
+          <p className="max-w-sm text-sm leading-6 text-pretty text-muted-foreground">{strings.footer.description}</p>
+          <nav aria-label="Footer">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+              {[...strings.nav, { label: strings.contactLabel, href: "#contact" }].map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="transition-colors hover:text-foreground">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </SiteFooter>
     </>
   )
 }

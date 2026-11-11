@@ -1,13 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource-variable/montserrat";
 @import "@metateic/ui/themes/metateic.css";
+@import "@metateic/ui/themes/base.css";
 @source "../node_modules/@metateic/ui/src";
-
-html {
-  scroll-padding-top: 5rem;
-}
-
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  -webkit-font-smoothing: antialiased;
-}

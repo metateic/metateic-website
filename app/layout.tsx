@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
-import { Montserrat } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Analytics, SkipLink, ThemeScript } from "@metateic/ui"
 import { strings } from "@/lib/strings"
 import "./globals.css"
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-})
-
 export const metadata: Metadata = {
+  metadataBase: new URL("https://metateic.com"),
+  alternates: { canonical: "/" },
   title: strings.site.title,
   description: strings.site.description,
+  openGraph: {
+    title: strings.site.title,
+    description: strings.site.description,
+    url: "/",
+    siteName: strings.site.name,
+    locale: "en_CA",
+    type: "website",
+  },
   icons: {
     icon: [
       { url: "/favicon-dark.png" },
@@ -20,10 +25,27 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f9fc" },
+    { media: "(prefers-color-scheme: dark)", color: "#050815" },
+  ],
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-CA" className={`${montserrat.variable} h-full`}>
-      <body className="min-h-full flex flex-col font-[var(--font-montserrat),system-ui,sans-serif]">
+    // data-theme is set by ThemeScript before hydration
+    <html lang="en-CA" className="h-full" suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+        <Analytics
+          src={process.env.NEXT_PUBLIC_ANALYTICS_SRC}
+          domain={process.env.NEXT_PUBLIC_ANALYTICS_DOMAIN}
+          websiteId={process.env.NEXT_PUBLIC_ANALYTICS_WEBSITE_ID}
+        />
+      </head>
+      <body className="flex min-h-full flex-col">
+        <SkipLink />
         {children}
       </body>
     </html>

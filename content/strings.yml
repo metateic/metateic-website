@@ -32,13 +32,13 @@ hero:
 
 # Intro Section
 intro:
-  label: "Intro"
+  label: "What we do"
   content: "simplifies the technology in front of a team so the business can stay on its actual objectives. We take operational friction off the table and deliver software that works in the environment you already have."
   support: "Engagements stay small on purpose. You see the decisions, the scope stays negotiable, and the result is something your own people can operate after we step back."
 
 # About Section
 about:
-  label: "About"
+  label: "How we think"
   content: "We are a Toronto consultancy built around a simple bet: most software problems get worse when the solution gets larger. Modern tools help. So does saying no to the ones you do not need."
   principles:
     - title: "Simplicity"
@@ -108,8 +108,8 @@ capabilities:
 
 # Insights Section
 insights:
-  heading_lead: "Notes from the practice."
-  heading_rest: "We write about the standards, security, and technology questions that show up in the work."
+  heading_lead: "Latest from the blog"
+  heading_rest: "Writing on IT standards, security and AI from the Metateic team."
   image: "/images/insights.png"
   button: "Visit the blog"
   blog_url: "https://blog.metateic.ca/"
@@ -152,15 +152,16 @@ contact:
     email_label: "Email"
     email_placeholder: "your.email@example.com"
     required: "(required)"
+    optional: "(optional)"
     phone_label: "Phone"
     phone_placeholder: "(555) 123-4567"
     message_label: "Message"
     message_placeholder: "What are you trying to get done, and where is it stuck?"
     mailing_list_label: "Sign up for news and updates"
-    submit: "Submit"
+    submit: "Send message"
     sending: "Sending..."
-    success: "Thanks! Your message has been sent successfully. We'll get back to you soon."
-    error: "Sorry, there was an error sending your message. Please try again."
+    success: "Message sent. We'll get back to you soon."
+    error: "Your message didn't send. Try again, or email one of us directly using the addresses above."
     email_subject: "New Contact Form Submission from Metateic Website"
 
 # Footer
