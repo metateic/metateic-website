@@ -75,7 +75,7 @@ type RawStrings = {
       error: string
     }
   }
-  footer: { legal_name: string }
+  footer: { legal_name: string; description: string }
 }
 
 const file = fs.readFileSync(path.join(process.cwd(), "content/strings.yml"), "utf8")
