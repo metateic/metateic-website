@@ -108,8 +108,8 @@ capabilities:
 
 # Insights Section
 insights:
-  heading_lead: "Notes from the practice."
-  heading_rest: "We write about the standards, security, and technology questions that show up in the work."
+  heading_lead: "Latest from the blog"
+  heading_rest: "Writing on IT standards, security and AI from the Metateic team."
   image: "/images/insights.png"
   button: "Visit the blog"
   blog_url: "https://blog.metateic.ca/"
