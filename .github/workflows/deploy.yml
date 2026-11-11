@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # Rebuild weekly so the Insights section picks up new blog posts.
+  schedule:
+    - cron: "17 9 * * 1"
 
 permissions:
   contents: read
@@ -51,6 +54,10 @@ jobs:
           NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
           NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
           NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          # Optional cookieless analytics; nothing loads unless ANALYTICS_SRC is set.
+          NEXT_PUBLIC_ANALYTICS_SRC: ${{ vars.ANALYTICS_SRC }}
+          NEXT_PUBLIC_ANALYTICS_DOMAIN: ${{ vars.ANALYTICS_DOMAIN }}
+          NEXT_PUBLIC_ANALYTICS_WEBSITE_ID: ${{ vars.ANALYTICS_WEBSITE_ID }}
 
       - uses: actions/upload-pages-artifact@v5
         if: github.event_name != 'pull_request'

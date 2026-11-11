@@ -17,14 +17,17 @@ import {
   Timeline,
 } from "@metateic/ui"
 import ContactForm from "./components/ContactForm"
+import { latestPosts } from "@/lib/posts"
 import { emailjs, strings } from "@/lib/strings"
 
-export default function Home() {
+export default async function Home() {
+  const posts = await latestPosts(strings.insights.posts)
+
   return (
     <>
       <SiteHeader
         wordmark={strings.site.name}
-        logo={{ src: "/metateic-logo-horizontal.png", alt: strings.site.name, className: "brand-logo" }}
+        logo={{ src: "/metateic-logo-horizontal.png", alt: strings.site.name, className: "brand-logo h-5 sm:h-6" }}
         links={strings.nav}
         cta={{ label: strings.contactLabel, href: "#contact" }}
         extra={<ThemeToggle />}
@@ -83,7 +86,7 @@ export default function Home() {
           </SplitPanel>
           <div className="mt-12">
             <LinkCards
-              items={strings.insights.posts.map((post) => ({
+              items={posts.map((post) => ({
                 href: post.url,
                 eyebrow: post.date,
                 title: post.title,

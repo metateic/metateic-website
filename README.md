@@ -20,6 +20,14 @@ All copy (navigation, sections, contact form labels) lives in `content/strings.y
 
 Fonts are self-hosted from `@fontsource-variable/montserrat`, so builds do not call Google Fonts. Colours, the font stack and light/dark values come from the `@metateic/ui` theme.
 
+## Blog posts
+
+The Insights section shows the three newest posts from `https://blog.metateic.ca/posts.json`, fetched when the site is built. The deploy workflow also runs every Monday so new posts appear without a commit here. If the blog can't be reached, the posts under `insights.posts` in `content/strings.yml` are used instead.
+
+## Analytics
+
+Off by default. To turn it on, add repository **variables** `ANALYTICS_SRC` (the provider's script URL) and either `ANALYTICS_DOMAIN` (Plausible) or `ANALYTICS_WEBSITE_ID` (Umami). The shared `Analytics` component adds the script only when `ANALYTICS_SRC` is set.
+
 ## Contact form
 
 The contact form sends through [EmailJS](https://www.emailjs.com). The template should accept `firstName`, `lastName`, `email`, `phone`, `message` and `mailingList`. For local testing, put the keys in `.env.local`:
